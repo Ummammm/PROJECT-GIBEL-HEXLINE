@@ -1,0 +1,202 @@
+[
+  {
+    "name": "Memsplice Stick",
+    "price": 120,
+    "rating": 4.9,
+    "score": 91,
+    "image": "assets/items/memsplice.png",
+    "description": "Carries someone’s dying memory in full sensory detail. Users report visions, emotional bleed-through, and last words in unfamiliar voices."
+  },
+  {
+    "name": "Lightbind Strap",
+    "price": 85,
+    "rating": 4.7,
+    "score": 87,
+    "image": "assets/items/lightbind.png",
+    "description": "Keeps shadowforms tethered to this reality. Known to induce minor strobe hallucinations and retinal echo."
+  },
+  {
+    "name": "Knock-Knot",
+    "price": 40,
+    "rating": 4.5,
+    "score": 75,
+    "image": "assets/items/knockknot.png",
+    "description": "A micro-device that disables local locks within 3m. Leaves no trace except a faint ozone burn."
+  },
+  {
+    "name": "Shadowpin",
+    "price": 65,
+    "rating": 4.2,
+    "score": 80,
+    "image": "assets/items/shadowpin.png",
+    "description": "Anchor for light-phase displacement. Used for short-range phasing and room-ghosting."
+  },
+  {
+    "name": "Mirrorfuzz Vial",
+    "price": 110,
+    "rating": 4.8,
+    "score": 89,
+    "image": "assets/items/mirrorfuzz.png",
+    "description": "Distorts facial recognition and biometric scanning. Causes mirror ghosts and misidentification trails."
+  },
+  {
+    "name": "Shifter Cube",
+    "price": 95,
+    "rating": 4.6,
+    "score": 84,
+    "image": "assets/items/shiftercube.png",
+    "description": "A quantum locker that hides 1 item in a shifting foldspace slot. Contents inaccessible if damaged."
+  },
+  {
+    "name": "Futureburn",
+    "price": 150,
+    "rating": 5.0,
+    "score": 98,
+    "image": "assets/items/futureburn.png",
+    "description": "Toxic fragment from a skipped timeline. Burns with predictions that may come true if inhaled."
+  },
+  {
+    "name": "Cleanwrap",
+    "price": 30,
+    "rating": 3.8,
+    "score": 60,
+    "image": "assets/items/cleanwrap.png",
+    "description": "Wipes digital trace residue. Used post-hack or pre-infiltration. Smells like melted plastic."
+  },
+  {
+    "name": "Ghostline Shard",
+    "price": 100,
+    "rating": 4.4,
+    "score": 82,
+    "image": "assets/items/ghostline.png",
+    "description": "Encoded whisperglass shard from the original Ghostline Relay. Still emits passive signals."
+  },
+  {
+    "name": "Headjack Echo",
+    "price": 130,
+    "rating": 4.9,
+    "score": 90,
+    "image": "assets/items/headjack.png",
+    "description": "Captures and replays neural recordings. Last user’s memories not fully scrubbed."
+  },
+  {
+    "name": "Bootleg 33-C",
+    "price": 45,
+    "rating": 3.5,
+    "score": 55,
+    "image": "assets/items/bootleg33c.png",
+    "description": "A cracked knockoff firmware patch. Use at your own risk — last tested on a dying rat."
+  },
+  {
+    "name": "Neural Splice Key",
+    "price": 140,
+    "rating": 4.8,
+    "score": 94,
+    "image": "assets/items/neuralsplice.png",
+    "description": "Opens restricted brain partitions in AIs and enhanced humans. Used in deep dive interrogations."
+  },
+  {
+    "name": "Specter Glyph (Type-9)",
+    "price": 88,
+    "rating": 4.3,
+    "score": 78,
+    "image": "assets/items/specterglyph.png",
+    "description": "Hologlyphic ward burned onto boneglass. Protects against lower-level hauntings and data apparitions."
+  },
+  {
+    "name": "AR Cloak Patch",
+    "price": 95,
+    "rating": 4.1,
+    "score": 76,
+    "image": "assets/items/arcloak.png",
+    "description": "Patches user out of low-grade augmented feeds. Causes flicker on older AR systems."
+  },
+  {
+    "name": "Dustvein Serum (Batch #89x)",
+    "price": 75,
+    "rating": 3.9,
+    "score": 67,
+    "image": "assets/items/dustvein.png",
+    "description": "Experimental biomod serum. Effects include memory flashing, enhanced pain tolerance, and teeth grinding."
+  },
+  {
+    "name": "Black Script Chip (Decrypted)",
+    "price": 170, 
+    "rating": 4.7,
+    "score": 93,
+    "image": "assets/items/blackscript.png",
+    "description": "Contains fragments of forbidden code. Said to interface with unknown architectures."
+  },
+  {
+    "name": "Gutter Sigil Coin",
+    "price": 35,
+    "rating": 3.6,
+    "score": 58,
+    "image": "assets/items/guttersigil.png",
+    "description": "Small coin etched with smuggler runes. Acts as both marker and minor hex catalyst."
+  },
+  {
+    "name": "Voxbox Echo Core",
+    "price": 112,
+    "rating": 4.5,
+    "score": 83,
+    "image": "assets/items/voxbox.png",
+    "description": "Can replay sound from past 48 hours in a 10m radius. Audio includes whispers not originally present."
+  },
+  {
+    "name": "Aetherflare Prism",
+    "price": 98,
+    "rating": 4.6,
+    "score": 86,
+    "image": "assets/items/aetherflare.png",
+    "description": "Reflects incoming light and minor chronomantic energy. Not safe to look at under moonlight."
+  },
+  {
+    "name": "Wyrm.OS Bootcard",
+    "price": 150,
+    "rating": 4.9,
+    "score": 95,
+    "image": "assets/items/wyrmos.png",
+    "description": "Boots an ancient AI ecosystem into any interface port. AI is highly aggressive and uncooperative."
+  },
+  {
+    "name": "Scab Drone Fragment",
+    "price": 60,
+    "rating": 4.0,
+    "score": 70,
+    "image": "assets/items/scabdrone.png",
+    "description": "One wing of a downed recon drone. Stores encrypted footage of something it shouldn’t have seen."
+  },
+  {
+    "name": "Burner keychain with a backup ID",
+    "price": 20,
+    "rating": 3.2,
+    "score": 50,
+    "image": "assets/items/burnerid.png",
+    "description": "Last-ditch identity scrambler. Only works once. Last user vanished mid-transit."
+  },
+  {
+    "name": "Ghostline Shard",
+    "price": 100,
+    "rating": 4.4,
+    "score": 82,
+    "image": "assets/items/ghostline2.png",
+    "description": "Duplicate relic shard from the Ghostline Relay. This one hums slightly when you lie near it."
+  },
+  {
+    "name": "Shifter Cube",
+    "price": 95,
+    "rating": 4.6,
+    "score": 84,
+    "image": "assets/items/shiftercube2.png",
+    "description": "Second-generation model. Shifts cleaner, but more likely to desync physical anchoring."
+  },
+  {
+    "name": "bugged identity badge",
+    "price": 15,
+    "rating": 2.9,
+    "score": 42,
+    "image": "assets/items/buggedbadge.png",
+    "description": "Shows different credentials every 3 minutes. Might fool security, might brick their system."
+  }
+]

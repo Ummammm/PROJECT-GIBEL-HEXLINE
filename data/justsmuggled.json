@@ -1,0 +1,99 @@
+{
+  "justSmuggled": {
+    "title": "JUST SMUGGLED",
+    "subtitle": "Fresh off the crawl routes. Still warm. Still wanted.",
+    "items": [
+      {
+        "id": "snaraveincrystal",
+        "name": "Snarevein Shard",
+        "description": "A crystalline shard that pulses with captured neural patterns. Carries fragments of someone's dying memory in full sensory detail. Buyers report visions, emotional bleed-through, and occasional last words in other voices.",
+        "price": "100 u",
+        "image": "assets/justsmuggled/snaraveincrystal.png",
+        "available": true
+      },
+      {
+        "id": "tetherlinkcryst",
+        "name": "Tetherling Cyst",
+        "description": "A parasitic data crystal that latches onto neural networks. Creates temporary psychic links between users, allowing shared consciousness and memory transfer. Highly regulated due to privacy concerns.",
+        "price": "100 u",
+        "image": "assets/justsmuggled/tetherlinkcryst.png",
+        "available": true
+      },
+      {
+        "id": "velroachpaclet",
+        "name": "Velcroach Packlet (Active)",
+        "description": "A living data storage unit disguised as a common cyber-roach. Currently active and carrying sensitive information. Can be programmed to seek specific networks or individuals. Handle with care.",
+        "price": "100 u",
+        "image": "assets/justsmuggled/velroachpaclet.png",
+        "available": true
+      },
+      {
+        "id": "mutetaskpatchset",
+        "name": "MUTE.TASK Patchset",
+        "description": "A collection of neural interface patches that temporarily disable specific cognitive functions. Used by hackers to bypass security systems and corporate firewalls. Illegal in most sectors.",
+        "price": "100 u",
+        "image": "assets/justsmuggled/mutetaskpatchset.png",
+        "available": true
+      },
+      {
+        "id": "sableglassilver",
+        "name": "Sableglass Sliver",
+        "description": "A fragment of rare sableglass, a material that can store and amplify psychic energy. This sliver contains residual emotional imprints from its previous owner. Highly sought after by collectors.",
+        "price": "100 u",
+        "image": "assets/justsmuggled/sableglasssilver.png",
+        "available": true
+      }
+    ]
+  },
+  "newSignal": {
+    "title": "NEW SIGNAL",
+    "subtitle": "Broadcast detected, supply line confirmed.",
+    "items": [
+      {
+        "id": "junktonguerelay",
+        "name": "Junktongue Relay",
+        "description": "A communication relay built from scavenged parts and alien technology. Can transmit messages across vast distances using quantum entanglement principles. Highly unstable but effective.",
+        "price": "150 u",
+        "image": "assets/justsmuggled/junktonguerelay.png",
+        "available": false,
+        "arrivalTime": 600
+      },
+      {
+        "id": "grinjackmask",
+        "name": "Grinjack Mask (Laugher's Cut)",
+        "description": "A neural interface mask that forces the wearer to smile while accessing their deepest fears and traumas. Used in psychological warfare and interrogation. The laugher's cut version is particularly cruel.",
+        "price": "300 u",
+        "image": "assets/justsmuggled/grinjackmask.png",
+        "available": false,
+        "arrivalTime": 5410
+      },
+      {
+        "id": "straysigilstack",
+        "name": "Stray Sigil Stack",
+        "description": "A collection of ancient symbols and runes that have been digitized and enhanced with modern technology. Each sigil contains fragments of forgotten knowledge and forbidden algorithms.",
+        "price": "200 u",
+        "image": "assets/justsmuggled/straysigilstack.png",
+        "available": false,
+        "arrivalTime": 600
+      },
+      {
+        "id": "gospelnulltoungue",
+        "name": "Gospel Null-Tongue",
+        "description": "A neural implant that completely silences the user's ability to speak while enhancing their ability to communicate through data streams and psychic projection. Popular among hackers and spies.",
+        "price": "500 u",
+        "image": "assets/justsmuggled/gospelnulltoungue.png",
+        "available": false,
+        "arrivalTime": 86400
+      },
+      {
+        "id": "cryohalocincinture",
+        "name": "Cryo-Halo Cincture",
+        "description": "A rare piece of jewelry that creates a protective field around the wearer, freezing time in a small radius. Extremely dangerous and unstable. Only a few are known to exist in the galaxy.",
+        "price": "1000 u",
+        "image": "assets/justsmuggled/cryohalocincinture.png",
+        "available": false,
+        "arrivalTime": 1209600
+      }
+    ]
+  }
+}

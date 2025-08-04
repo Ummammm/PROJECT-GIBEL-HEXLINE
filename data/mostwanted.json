@@ -1,0 +1,72 @@
+[
+  {
+    "name": "KARAXI VEIL (Model: Duskroot)",
+    "price": 320,
+    "rating": 4.7,
+    "score": 87,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/karaxiveil.png",
+    "description": "Woven from blindroot silk and void-signal threads. Those who wear it are forgotten even by the mirrors.",
+    "source": "Lifted from the personal kit of a silent operative during the Karmis Rift Collapse. Originally used by the Echo Monks of the Karaxi Vale.",
+    "why": "Removes trace-signature data and nullifies visual recognition layers. Traders report being 'unseen' even by AI. Perfect for vanish-tier ops."
+  },
+  {
+    "name": "NOCT-HALO ENGINE (Hushbuild)",
+    "price": 460,
+    "rating": 4.8,
+    "score": 89,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/nocthaloengine.png",
+    "description": "A cold engine that drinks shadowlight and folds the self into silence. Its hum echoes in dreams not your own.",
+    "source": "Recovered from a downed courier ship outside the Veiled Verge. All crew were missing — only the engine was intact, still warm.",
+    "why": "Generates ambient null-fields and pulse-muffling barriers. Useful for infiltration, exorcisms, and spiritual disengagement from surveillance nets."
+  },
+  {
+    "name": "SERAPHIM 404 SCRIPT",
+    "price": 540,
+    "rating": 4.9,
+    "score": 93,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/seraphim.png",
+    "description": "An exile-fragment of divine code, broken mid-prayer. Activates in moments of denial, rewriting failure into disappearance.",
+    "source": "Scraped from the deep-code ruins of a deleted faith engine. Last known use triggered an entire vault to phase out of existence.",
+    "why": "Used by digital mystics and merc-code runners. Can corrupt targeting systems, auto-fail safeties, or erase a moment from time entirely."
+  },
+  {
+    "name": "THE LAST CRUX",
+    "price": 500,
+    "rating": 4.9,
+    "score": 91,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/thelastcrux.png",
+    "description": "A final key etched in unvoiceable language. Meant to unlock only endings — used once, and reality weeps.",
+    "source": "Recovered from the ruins of the Quantum Nexus after the Great Collapse. Originally part of the core processing unit that maintained reality stability across multiple dimensions.",
+    "why": "Contains fragments of the original reality matrix. Governments and corporations seek it to rebuild dimensional gateways. Extremely dangerous — previous owners reported experiencing multiple timelines simultaneously."
+  },
+  {
+    "name": "ORISON GLYPH / ECHO FORM",
+    "price": 390,
+    "rating": 4.6,
+    "score": 84,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/orisonglyph.png",
+    "description": "A ghosted sigil pulsing with liturgical static. Reacts to memory-scars and ancestral grief. Speaks when no one else will.",
+    "source": "Smuggled from a failed digsite inside the cathedral ruins of Genos-K, buried in vox-resistant clay.",
+    "why": "Sought by psychonauts and haunt-clerics. Can bridge voids between the living and the vanished. Sometimes hums your true name back at you."
+  },
+  {
+    "name": "PHAGEHEART CORE",
+    "price": 450,
+    "rating": 4.8,
+    "score": 88,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/phageheartcore.png",
+    "description": "A corrupted prayer-core born in biocryptic warfields. Feeds on hate, bleeds heat. Some say it still listens.",
+    "source": "Harvested from an abandoned biotechnic crucible off-world. Echoed signs of ‘awareness’ persist during scans.",
+    "why": "Functions as a living power source or spiritual weapon. Interacts with emotional residue to power forbidden devices. Handle with mental shielding."
+  },
+  {
+    "name": "FORGEWALKER’S SEED",
+    "price": 580,
+    "rating": 5.0,
+    "score": 95,
+    "image": "PROJECT GIBEL - HEXLINE/assets/products/mostwanted/forgewalkerseed.png",
+    "description": "A dormant relic from an unnamed order. It awakens in crisis, forging shape from belief and ruin.",
+    "source": "Unearthed from the lower tiers of the Broken Spiral. Some claim it was left behind by the First Artificer.",
+    "why": "Responds to crisis signatures and adapts into forms unknown. Known to self-evolve in the presence of soulburn or chaos. Rare. Likely sentient."
+  }
+]

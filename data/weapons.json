@@ -1,0 +1,25 @@
+{
+  "stockpile": [
+    { "name": "GRITSHANK-19", "rating": 4.8, "price": 90, "stock": 14, "image": "assets/products/weapons/common/gritshank.png", "description": "Rust-fed sidearm standard among sewer skirmishers. Clogs easy, but never misfires when it matters." },
+    { "name": "TUNNEL-HACK SAWPIKE", "rating": 4.5, "price": 120, "stock": 9, "image": "assets/products/weapons/common/tunnelhacl.png", "description": "A jagged relic of mining rebellion. Half blade, half breach tool — all menace." },
+    { "name": "MOTHBOX STUNNER", "rating": 4.7, "price": 80, "stock": 18, "image": "assets/products/weapons/common/mothbox.png", "description": "Emits a disorienting pulse and a chirping drone. Designed for street abductions and night raids." },
+    { "name": "FLEA-MOD 32U SMG", "rating": 4.6, "price": 110, "stock": 12, "image": "assets/products/weapons/common/fleamod32u.png", "description": "Compact, chaotic, and tuned to spray suppression. Favored by tunnel-rats and junk runners." },
+    { "name": "BRICKJAW WRENCH-HAMMER", "rating": 4.9, "price": 150, "stock": 5, "image": "assets/products/weapons/common/brickjaw.png", "description": "Urban melee hybrid. Busts doors or skulls with equal reliability. Comes with improvised bolt-latch." },
+    { "name": "SLUG-TWIN ZIPGUN", "rating": 4.3, "price": 95, "stock": 20, "image": "assets/products/weapons/common/slugtwin.png", "description": "Dual-barrel chaos shooter. Untraceable, unstable, and undeniably lethal in the right hands." },
+    { "name": "DEADFLAKE BLADE", "rating": 4.2, "price": 100, "stock": 11, "image": "assets/products/weapons/common/deadflake.png", "description": "Serrated mono-steel dagger laced with flake-venom residue. Illegal to carry. Too useful not to." },
+    { "name": "DROP-TONGUE TASER WHIP", "rating": 4.4, "price": 105, "stock": 7, "image": "assets/products/weapons/common/droptonguetaser.png", "description": "Retractable shock-lash. Good for crowd control or silent takedowns. Flicks like a serpent." },
+    { "name": "SCRAP-CRANK RIFLE", "rating": 4.6, "price": 130, "stock": 8, "image": "assets/products/weapons/common/scrapcrank.png", "description": "Frankenstein firearm cobbled from drone parts and old railgun coils. Eats energy cores raw." },
+    { "name": "GUTTERPOP SHOTGUN", "rating": 4.7, "price": 125, "stock": 10, "image": "assets/products/weapons/common/gutterpop.png", "description": "Loud, crude, and devastating at short range. Loaded with shrapnel or whatever's on hand." }
+  ],
+  "signature": [
+    { "name": "WRAITHJAW PISTOL", "rating": 5.0, "price": 200, "stock": 1, "image": "assets/products/weapons/signature/arcnester.png", "description": "A spectral-caliber sidearm that syncs with fear signals. Fires silence before sound." },
+    { "name": "SPINAL REED BLADE", "rating": 5.0, "price": 190, "stock": 1, "image": "assets/products/weapons/signature/spinalreed.png", "description": "Forged from a cloned assassin's vertebrae. Hums when near traitors." },
+    { "name": "HOLLOWGRIT RIFLE", "rating": 5.0, "price": 210, "stock": 1, "image": "assets/products/weapons/signature/hollowgrit.png", "description": "Fires void-etched rounds that unmake targets on contact. Requires a steady nerve to wield." },
+    { "name": "STITCHER BOLT DAGGER", "rating": 5.0, "price": 175, "stock": 1, "image": "assets/products/weapons/signature/sticherboltdagger.png", "description": "Barbed with data-pins. Infects systems with every stab. Good for meat and machine." },
+    { "name": "ARC-NESTER HAND GRENADE", "rating": 5.0, "price": 160, "stock": 1, "image": "assets/products/weapons/signature/arcnester.png", "description": "Mini-storm in a canister. Delivers chaotic magnetic pulses and nested EMP surges." },
+    { "name": "FANGSTATIC KNUCKLE", "rating": 5.0, "price": 185, "stock": 1, "image": "assets/products/weapons/signature/fangtastic.png", "description": "Charged melee knuckles laced with bio-thorns. Tazes on contact, scars on exit." },
+    { "name": "PROPHET'S LONGSHOT (Mod. 777)", "rating": 5.0, "price": 250, "stock": 1, "image": "assets/products/weapons/signature/prophetlongshot.png", "description": "Rumored to kill across timelines. Fires only once a week — never misses when it counts." },
+    { "name": "COVENLOCK ARC-FLAIL", "rating": 5.0, "price": 220, "stock": 1, "image": "assets/products/weapons/signature/covenlock.png", "description": "A chained weapon of linked electro-plasm rods, pulsing with ritual current. Built from repurposed confession nodes and combat-grade binding steel. When ignited, it arcs between dimensions, leaving burn-sigils mid-air." },
+    { "name": "OBLIVELANCE", "rating": 5.0, "price": 240, "stock": 1, "image": "assets/products/weapons/signature/oblivelance.png", "description": "A needle-like precision rifle constructed from obsidian weave and psychometric alloy. Its barrel processes memory traces of the target — and erases them as the round fires. No evidence. No echo. No forgiveness." }
+  ]
+}

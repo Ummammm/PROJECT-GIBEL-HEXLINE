@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loadbay XIII - Hexline</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif']
+          },
+          colors: {
+            neonGreen: '#00FFAA',
+            cyberPink: '#FF2C79',
+            darkBg: '#0f0f0f'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: white;
+      position: relative;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      background-image: url('assets/placeholder/fantasy-style-half-fox-half-robot.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      inset: 0;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+      padding: 0 40px;
+      margin: 0 -40px;
+    }
+    
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 255, 170, 0.2);
+      border: 1px solid #00FFAA;
+      color: #00FFAA;
+      padding: 8px 12px;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .carousel-container:hover .carousel-button {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .carousel-button:hover {
+      background: rgba(0, 255, 170, 0.4);
+    }
+    
+    .carousel-button.prev {
+      left: 0;
+    }
+    
+    .carousel-button.next {
+      right: 0;
+    }
+    
+    .carousel-slide {
+      display: flex;
+      gap: 1rem;
+      transition: transform 0.5s ease;
+      width: 100%;
+    }
+    
+    .carousel-slide > div {
+      flex: 1;
+      min-width: 0;
+    }
+    
+    @media (max-width: 1024px) {
+      .carousel-container {
+        padding: 0 35px;
+        margin: 0 -35px;
+      }
+      
+      .carousel-button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+      }
+      
+      .carousel-slide {
+        gap: 0.75rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .carousel-container {
+        padding: 0 30px;
+        margin: 0 -30px;
+      }
+      
+      .carousel-button {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+      }
+      
+      .carousel-slide {
+        gap: 0.5rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .carousel-container {
+        padding: 0 25px;
+        margin: 0 -25px;
+      }
+      
+      .carousel-button {
+        width: 25px;
+        height: 25px;
+        font-size: 12px;
+      }
+      
+      .carousel-slide {
+        gap: 0.25rem;
+      }
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
+    
+    .modal-content {
+      background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+      margin: 5% auto;
+      padding: 0;
+      border: 2px solid #00FFAA;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+      animation: modalSlideIn 0.3s ease-out;
+    }
+    
+    @keyframes modalSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      color: #00FFAA;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .close:hover {
+      color: #FF2C79;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-out;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-black text-white">
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-6 py-4 border-b border-neonGreen bg-black bg-opacity-80">
+    <h1 class="text-3xl font-bold text-neonGreen">HEXLINE</h1>
+    <ul class="flex gap-6 text-sm font-semibold">
+      <li><a href="stockpile.html" class="hover:text-neonGreen transition">STOCKPILE</a></li>
+      <li><a href="mostwanted.html" class="hover:text-neonGreen transition">MOST WANTED</a></li>
+      <li><a href="justsmuggled.html" class="hover:text-neonGreen transition">JUST SMUGGLED</a></li>
+      <li><a href="loadbayxiii.html" class="border px-2 py-1 border-neonGreen text-neonGreen">LOADBAY XIII</a></li>
+      <li><a href="dropcrates.html" class="hover:text-neonGreen transition">DROPCRATES</a></li>
+    </ul>
+    <div class="flex gap-4">
+      <a href="stash.html" class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition">STASH <span id="stash-count" class="text-xs">0</span></a>
+      <a href="linkin.html" class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition">LINK IN</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <section class="text-center py-12">
+    <h2 class="text-4xl font-bold text-neonGreen">LOADBAY XIII</h2>
+    <p class="text-sm text-gray-400 mt-2 italic">"CLAMPED CRATES. COLD STEEL. NO RECEIPTS."</p>
+  </section>
+
+  <!-- SIGNATURE WEAPONS SECTION (ABOVE FILTER) -->
+  <section class="px-8 mb-8">
+    <h3 class="text-xl font-bold mb-4">SIGNATURE WEAPONS</h3>
+    <div class="carousel-container" id="signature-carousel-container">
+      <button class="carousel-button prev" onclick="scrollSignatureCarousel(-1)">‹</button>
+      <div id="signature-carousel" class="carousel-slide"></div>
+      <button class="carousel-button next" onclick="scrollSignatureCarousel(1)">›</button>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT WITH FILTER -->
+  <section class="flex gap-8 px-8 pb-16">
+    <!-- FILTER SIDEBAR -->
+    <aside class="w-80 border border-neonGreen p-6 backdrop-blur-sm bg-black/50 rounded h-fit">
+      <h4 class="font-bold text-lg mb-4">FILTER</h4>
+      
+      <div class="mb-6">
+        <p class="text-sm font-semibold mb-2">BY WEAPON TYPE :</p>
+        <ul class="space-y-2 text-sm">
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="weapon-type" value="STREET GRADE" class="mr-2"> STREET GRADE</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="weapon-type" value="MODDED INDUSTRIALS" class="mr-2"> MODDED INDUSTRIALS</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="weapon-type" value="ARC-TECH ARMS" class="mr-2"> ARC-TECH ARMS</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="weapon-type" value="PRECISION STRIKE TOOLS" class="mr-2"> PRECISION STRIKE TOOLS</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="weapon-type" value="OUTLAW LOADOUTS" class="mr-2"> OUTLAW LOADOUTS</label></li>
+        </ul>
+      </div>
+      
+      <div class="mb-6">
+        <p class="text-sm font-semibold mb-2">BY PRICE SORT :</p>
+        <div class="space-y-2">
+          <label class="flex items-center cursor-pointer"><input type="radio" name="price-sort" value="LOWEST" class="mr-2"> LOWEST</label>
+          <label class="flex items-center cursor-pointer"><input type="radio" name="price-sort" value="HIGHEST" class="mr-2"> HIGHEST</label>
+        </div>
+      </div>
+      
+      <div class="mb-6">
+        <p class="text-sm font-semibold mb-2">BY RATINGS :</p>
+        <ul class="text-sm space-y-2">
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="rating" value="5.0" class="mr-2"> 5.0</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="rating" value="4.0 - 4.9" class="mr-2"> 4.0 - 4.9</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="rating" value="3.0 - 3.9" class="mr-2"> 3.0 - 3.9</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="rating" value="2.0 - 2.9" class="mr-2"> 2.0 - 2.9</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="rating" value="1.0 - 1.9" class="mr-2"> 1.0 - 1.9</label></li>
+        </ul>
+      </div>
+      
+      <div class="mb-6">
+        <p class="text-sm font-semibold mb-2">BY STOCK TYPE :</p>
+        <ul class="text-sm space-y-2">
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="stock-type" value="SIGNATURE" class="mr-2"> SIGNATURE</label></li>
+          <li><label class="flex items-center cursor-pointer"><input type="checkbox" name="stock-type" value="STOCKPILE" class="mr-2"> STOCKPILE</label></li>
+        </ul>
+      </div>
+      
+      <button onclick="clearAllFilters()" class="w-full bg-neonGreen text-black text-sm font-semibold py-2 rounded hover:bg-opacity-80 transition mb-4">
+        CLEAR ALL FILTERS
+      </button>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="flex-1">
+      <!-- WEAPON STOCKPILE GRID -->
+      <section>
+        <h3 class="text-xl font-bold mb-4">WEAPON STOCKPILE</h3>
+        <div id="stockpile-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+      </section>
+    </div>
+  </section>
+
+  <!-- WEAPON DETAILS MODAL -->
+  <div id="weaponModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <div id="modal-content" class="p-6">
+        <!-- Modal content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    let allWeapons = [];
+    let filteredWeapons = { signature: [], stockpile: [] };
+    let currentSignatureSlide = 0;
+
+    // Manual carousel functionality
+    function scrollSignatureCarousel(direction) {
+      const carousel = document.getElementById('signature-carousel');
+      const totalSlides = Math.ceil(filteredWeapons.signature.length / 3);
+      
+      if (totalSlides === 0) return;
+      
+      if (direction === 1) {
+        currentSignatureSlide = (currentSignatureSlide + 1) % totalSlides;
+      } else {
+        currentSignatureSlide = currentSignatureSlide === 0 ? totalSlides - 1 : currentSignatureSlide - 1;
+      }
+      
+      const translateX = -currentSignatureSlide * 100;
+      carousel.style.transform = `translateX(${translateX}%)`;
+    }
+
+    // Modal functionality
+    function openModal(weapon) {
+      const modal = document.getElementById('weaponModal');
+      const modalContent = document.getElementById('modal-content');
+      
+      modalContent.innerHTML = `
+        <div class="text-center">
+          <img src="${weapon.image}" class="w-32 h-32 object-contain mx-auto mb-4" alt="${weapon.name}" />
+          <h2 class="text-2xl font-bold text-neonGreen mb-2">${weapon.name}</h2>
+          <div class="flex justify-center gap-4 mb-4">
+            <span class="bg-yellow-400 text-black font-bold px-3 py-1 rounded">${weapon.rating}/5.0</span>
+            <span class="bg-pink-500 px-3 py-1 rounded">${weapon.stock} in stock</span>
+          </div>
+          <p class="text-xl text-neonGreen mb-4">${weapon.price} U</p>
+          <div class="text-sm text-gray-300 mb-6 italic leading-relaxed">
+            "${weapon.description}"
+          </div>
+          <div class="space-y-3">
+            <button id="modal-stash-button" class="w-full bg-neonGreen text-black font-semibold py-3 rounded hover:bg-opacity-80 transition">
+              PUT TO STASH
+            </button>
+            <button class="w-full border border-neonGreen text-neonGreen py-3 rounded hover:bg-neonGreen hover:text-black transition">
+              ADD TO WISHLIST
+            </button>
+          </div>
+        </div>
+      `;
+      
+      // Add event listener to the modal stash button
+      setTimeout(() => {
+        const stashButton = document.getElementById('modal-stash-button');
+        if (stashButton) {
+          stashButton.onclick = () => {
+            addToStash(weapon);
+            closeModal();
+          };
+        }
+      }, 100);
+      
+      modal.style.display = 'block';
+    }
+
+    function closeModal() {
+      document.getElementById('weaponModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('weaponModal');
+      if (event.target === modal) {
+        closeModal();
+      }
+    }
+
+    // Filter functionality
+    function applyFilters() {
+      const weaponTypeFilters = getCheckedValues('weapon-type');
+      const priceFilter = getCheckedRadioValue('price-sort');
+      const ratingFilters = getCheckedValues('rating');
+      const stockTypeFilters = getCheckedValues('stock-type');
+
+      filteredWeapons = {
+        signature: allWeapons.signature.filter(weapon => {
+          return filterWeapon(weapon, weaponTypeFilters, priceFilter, ratingFilters, stockTypeFilters);
+        }),
+        stockpile: allWeapons.stockpile.filter(weapon => {
+          return filterWeapon(weapon, weaponTypeFilters, priceFilter, ratingFilters, stockTypeFilters);
+        })
+      };
+
+      // Apply price sorting if selected
+      if (priceFilter) {
+        sortWeaponsByPrice(priceFilter);
+      }
+
+      renderWeapons();
+      updateFilterCount();
+    }
+
+    function getCheckedValues(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value);
+    }
+
+    function getCheckedRadioValue(name) {
+      const checked = document.querySelector(`input[name="${name}"]:checked`);
+      return checked ? checked.value : null;
+    }
+
+    function filterWeapon(weapon, weaponTypeFilters, priceFilter, ratingFilters, stockTypeFilters) {
+      // Weapon type filtering (based on weapon characteristics)
+      if (weaponTypeFilters.length > 0) {
+        const weaponType = getWeaponType(weapon);
+        if (!weaponTypeFilters.includes(weaponType)) {
+          return false;
+        }
+      }
+
+      // Rating filtering
+      if (ratingFilters.length > 0) {
+        const ratingMatch = ratingFilters.some(rating => {
+          if (rating === '5.0') return weapon.rating === 5.0;
+          if (rating === '4.0 - 4.9') return weapon.rating >= 4.0 && weapon.rating < 5.0;
+          if (rating === '3.0 - 3.9') return weapon.rating >= 3.0 && weapon.rating < 4.0;
+          if (rating === '2.0 - 2.9') return weapon.rating >= 2.0 && weapon.rating < 3.0;
+          if (rating === '1.0 - 1.9') return weapon.rating >= 1.0 && weapon.rating < 2.0;
+          return false;
+        });
+        if (!ratingMatch) return false;
+      }
+
+      // Stock type filtering
+      if (stockTypeFilters.length > 0) {
+        const isSignature = weapon.rating === 5.0;
+        const isStockpile = weapon.rating < 5.0;
+        
+        if (stockTypeFilters.includes('SIGNATURE') && !isSignature) return false;
+        if (stockTypeFilters.includes('STOCKPILE') && !isStockpile) return false;
+      }
+
+      return true;
+    }
+
+    function getWeaponType(weapon) {
+      // Determine weapon type based on name and characteristics
+      const name = weapon.name.toLowerCase();
+      
+      if (name.includes('pistol') || name.includes('sidearm') || name.includes('gun')) {
+        return 'STREET GRADE';
+      }
+      if (name.includes('rifle') || name.includes('saw') || name.includes('crank')) {
+        return 'MODDED INDUSTRIALS';
+      }
+      if (name.includes('arc') || name.includes('tech') || name.includes('void')) {
+        return 'ARC-TECH ARMS';
+      }
+      if (name.includes('blade') || name.includes('dagger') || name.includes('knuckle')) {
+        return 'PRECISION STRIKE TOOLS';
+      }
+      if (name.includes('whip') || name.includes('grenade') || name.includes('shotgun')) {
+        return 'OUTLAW LOADOUTS';
+      }
+      
+      // Default categorization based on rating
+      if (weapon.rating === 5.0) return 'ARC-TECH ARMS';
+      if (weapon.rating >= 4.5) return 'MODDED INDUSTRIALS';
+      if (weapon.rating >= 4.0) return 'PRECISION STRIKE TOOLS';
+      return 'STREET GRADE';
+    }
+
+    function sortWeaponsByPrice(sortOrder) {
+      const sortFunction = (a, b) => {
+        if (sortOrder === 'LOWEST') {
+          return a.price - b.price;
+        } else if (sortOrder === 'HIGHEST') {
+          return b.price - a.price;
+        }
+        return 0;
+      };
+
+      filteredWeapons.signature.sort(sortFunction);
+      filteredWeapons.stockpile.sort(sortFunction);
+    }
+
+    function clearAllFilters() {
+      // Uncheck all checkboxes
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+      
+      // Uncheck all radio buttons
+      document.querySelectorAll('input[type="radio"]').forEach(rb => rb.checked = false);
+      
+      // Reset to show all weapons
+      filteredWeapons = { ...allWeapons };
+      renderWeapons();
+    }
+
+    function renderWeapons() {
+      const stockGrid = document.getElementById('stockpile-grid');
+      const sigCarousel = document.getElementById('signature-carousel');
+
+      // Clear existing content
+      stockGrid.innerHTML = '';
+      sigCarousel.innerHTML = '';
+
+      // Render stockpile weapons
+      filteredWeapons.stockpile.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `p-3 border border-neonGreen bg-black/30 rounded-xl hover:bg-white/10 transition cursor-pointer group relative`;
+        card.onclick = () => openModal(item);
+        card.innerHTML = `
+          <div class="flex justify-between text-xs mb-1">
+            <span class="bg-yellow-400 text-black font-bold px-1.5 py-0.5 rounded">${item.rating}/5.0</span>
+            <span class="bg-pink-500 px-1.5 py-0.5 rounded">${item.stock}</span>
+          </div>
+          <img src="${item.image}" class="w-16 h-16 object-contain mx-auto mb-2" />
+          <p class="text-xs font-bold text-center mb-1 truncate">${item.name}</p>
+          <p class="text-xs text-gray-300 text-center mb-2">${item.price} U</p>
+          <button class="stash-button w-full bg-neonGreen text-black text-xs font-semibold py-1.5 rounded-full hover:scale-105 transition" onclick="event.stopPropagation()" data-item-name="${item.name}">
+            PUT TO STASH
+          </button>
+          <!-- Tooltip with description -->
+          <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-black/90 border border-neonGreen rounded-lg text-xs text-gray-300 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+            <div class="text-neonGreen font-semibold mb-1">${item.name}</div>
+            <div class="italic">${item.description}</div>
+            <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-neonGreen"></div>
+          </div>
+        `;
+        stockGrid.appendChild(card);
+      });
+
+      // Render signature weapons in slides of 3
+      sigCarousel.innerHTML = '';
+      
+      // Group weapons into slides of 3
+      for (let i = 0; i < filteredWeapons.signature.length; i += 3) {
+        const slide = document.createElement('div');
+        slide.className = 'flex gap-6 min-w-full';
+        
+        const slideWeapons = filteredWeapons.signature.slice(i, i + 3);
+        
+                 slideWeapons.forEach(item => {
+           const card = document.createElement('div');
+           card.className = `flex-1 p-2 sm:p-3 border border-yellow-300 bg-black/30 rounded-xl hover:bg-white/10 transition cursor-pointer group relative min-w-0`;
+           card.onclick = () => openModal(item);
+           card.innerHTML = `
+             <img src="${item.image}" class="w-14 h-14 sm:w-16 sm:h-16 object-contain mx-auto mb-2" />
+             <p class="text-xs font-bold text-center mb-1 truncate">${item.name}</p>
+             <p class="text-xs text-gray-300 text-center mb-2">${item.price} U</p>
+             <button class="stash-button w-full bg-neonGreen text-black text-xs font-semibold py-1 rounded-full hover:scale-105 transition" onclick="event.stopPropagation()" data-item-name="${item.name}">
+               PUT TO STASH
+             </button>
+             <!-- Tooltip with description -->
+             <div class="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-black/90 border border-yellow-300 rounded-lg text-xs text-gray-300 max-w-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10">
+               <div class="text-yellow-300 font-semibold mb-1">${item.name}</div>
+               <div class="italic">${item.description}</div>
+               <div class="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-yellow-300"></div>
+             </div>
+           `;
+           slide.appendChild(card);
+         });
+        
+                 // Fill remaining slots with empty cards if needed
+         while (slide.children.length < 3) {
+           const emptyCard = document.createElement('div');
+           emptyCard.className = 'flex-1 p-2 sm:p-3 border border-yellow-300/30 bg-black/10 rounded-xl opacity-50 min-w-0';
+           emptyCard.innerHTML = `
+             <div class="w-14 h-14 sm:w-16 sm:h-16 bg-gray-800 rounded mx-auto mb-2 flex items-center justify-center">
+               <span class="text-gray-600 text-xs">EMPTY</span>
+             </div>
+             <p class="text-xs font-bold text-center mb-1 text-gray-600 truncate">NO WEAPON</p>
+             <p class="text-xs text-gray-500 text-center mb-2">-- U</p>
+             <button class="w-full bg-gray-700 text-gray-500 text-xs font-semibold py-1 rounded-full cursor-not-allowed">
+               UNAVAILABLE
+             </button>
+           `;
+           slide.appendChild(emptyCard);
+         }
+        
+        sigCarousel.appendChild(slide);
+      }
+      
+      // Reset carousel position
+      currentSignatureSlide = 0;
+      sigCarousel.style.transform = 'translateX(0%)';
+    }
+
+    // Stash functionality
+    function addToStash(weapon) {
+      const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+
+      // Check if item is already in stash
+      const existing = stash.find(i => i.name === weapon.name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        // Create a stash item with the weapon data
+        const stashItem = {
+          name: weapon.name,
+          image: weapon.image,
+          price: weapon.price,
+          quantity: 1,
+          description: weapon.description,
+          rating: weapon.rating,
+          stock: weapon.stock
+        };
+        stash.push(stashItem);
+      }
+
+      localStorage.setItem('hexline-stash', JSON.stringify(stash));
+      updateStashCount();
+      
+      // Show success message
+      const message = document.createElement('div');
+      message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+      message.textContent = `${weapon.name} added to stash!`;
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        message.remove();
+      }, 3000);
+    }
+
+    function updateStashCount() {
+      const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+      const total = stash.reduce((sum, item) => sum + item.quantity, 0);
+      const stashCountElement = document.getElementById('stash-count');
+      if (stashCountElement) {
+        stashCountElement.textContent = total;
+      }
+    }
+
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add event listeners for filters
+      document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(input => {
+        input.addEventListener('change', applyFilters);
+      });
+
+      // Load weapons data
+      fetch('data/weapons.json')
+        .then(res => res.json())
+        .then(data => {
+          allWeapons = data;
+          filteredWeapons = { ...data };
+          renderWeapons();
+          
+          // Add filter count display
+          updateFilterCount();
+          
+          // Initialize stash count
+          updateStashCount();
+        })
+        .catch(error => {
+          console.error('Error loading weapons data:', error);
+        });
+
+      // Event delegation for stash buttons
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('stash-button')) {
+          e.stopPropagation();
+          const itemName = e.target.getAttribute('data-item-name');
+          const weapon = [...allWeapons.signature, ...allWeapons.stockpile].find(w => w.name === itemName);
+          if (weapon) {
+            addToStash(weapon);
+          }
+        }
+      });
+    });
+
+    function updateFilterCount() {
+      const totalSignature = allWeapons.signature.length;
+      const totalStockpile = allWeapons.stockpile.length;
+      const filteredSignature = filteredWeapons.signature.length;
+      const filteredStockpile = filteredWeapons.stockpile.length;
+      
+      // Update signature section title
+      const sigTitle = document.querySelector('h3');
+      if (sigTitle && sigTitle.textContent.includes('SIGNATURE WEAPONS')) {
+        sigTitle.textContent = `SIGNATURE WEAPONS (${filteredSignature}/${totalSignature})`;
+      }
+      
+      // Update stockpile section title
+      const stockTitle = document.querySelector('h3:last-of-type');
+      if (stockTitle && stockTitle.textContent.includes('WEAPON STOCKPILE')) {
+        stockTitle.textContent = `WEAPON STOCKPILE (${filteredStockpile}/${totalStockpile})`;
+      }
+    }
+  </script>
+</body>
+
+</html>

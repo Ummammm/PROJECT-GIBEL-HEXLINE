@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexline - Most Wanted</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif']
+          },
+          colors: {
+            neonGreen: '#00FFAA',
+            cyberPink: '#FF2C79',
+            bitcoinPink: '#FF00FF',
+            darkGray: '#1A1A1A',
+            cyberBlack: '#0a0a0a',
+            cyberBlue: '#00BFFF',
+            glowWhite: '#f0f0f0'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.3s ease-in forwards',
+            'fade-out': 'fadeOut 0.2s ease-out forwards',
+            'stagger-in': 'staggerIn 0.3s ease-out both'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            fadeOut: {
+              '0%': { opacity: 1 },
+              '100%': { opacity: 0 },
+            },
+            staggerIn: {
+              from: { opacity: 0, transform: 'scale(0.95)' },
+              to: { opacity: 1, transform: 'scale(1)' }
+            }
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: white;
+      position: relative;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      background-image: url('../../assets/placeholder/cyberpunk-bitcoin-illustration (2).jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      inset: 0;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .item {
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .item.fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .item.fade-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-cyberBlack bg-opacity-90">
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-6 py-4 border-b border-neonGreen bg-black bg-opacity-80">
+    <h1 class="text-5xl font-bold text-neonGreen">HEXLINE</h1>
+    <ul class="flex gap-6 text-sm font-bold ">
+      <li><a href="main.html" class="hover:text-neonGreen transition text-xl">STOCKPILE</a></li>
+      <li><a href="mostwanted.html" class="border px-2 py-1 border-neonGreen text-neonGreen text-xl">MOST WANTED</a></li>
+      <li><a href="justsmuggled.html" class="hover:text-neonGreen transition text-xl">JUST SMUGGLED</a></li>
+      <li><a href="loadbayxiii.html" class="hover:text-neonGreen transition text-xl">LOADBAY XIII</a></li>
+      <li><a href="dropcrates.html" class="hover:text-neonGreen transition text-xl">DROPCRATES</a></li>
+    </ul>
+    <div class="flex gap-4">
+      <a href="stash.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">STASH <span id="stash-count" class="text-xs">0</span></a>
+      <a href="linkin.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">LINK
+        IN</a>
+    </div>
+  </nav>
+
+  <!-- PAGE TITLE -->
+  <header class="text-center mt-10 mb-6">
+    <h2 class="text-4xl font-bold text-neonGreen">MOST WANTED</h2>
+    <p class="text-cyberPink uppercase mt-1 text-sm tracking-wider">
+      FLAGGED. HUNTED. IMPOSSIBLE TO FORGET - IF YOU SURVIVE OWNING ONE.
+    </p>
+  </header>
+
+  <!-- MAIN CONTENT WRAPPER -->
+  <main class="flex px-10 gap-10">
+    <!-- ITEM GRID -->
+    <section class="grid grid-cols-3 gap-6 w-2/3" id="item-grid">
+      <!-- Items will be loaded here -->
+    </section>
+
+    <!-- ITEM DETAIL PANEL -->
+    <aside class="w-1/3 border border-neonGreen p-6 bg-black/30 rounded-lg">
+      
+      
+      <img src="assets/products/mostwanted/thelastcrux.png" alt="" class="w-40 h-40 object-contain mx-auto mb-4 item-image" />
+      <h3 class="text-2xl font-bold text-center mb-4 item-name">ITEM NAME</h3>
+
+      <div class="text-sm space-y-4">
+        <div>
+          <p class="text-white font-semibold uppercase">DESCRIPTION</p>
+          <p class="item-description text-gray-300 text-xs mt-1 leading-relaxed">Cryptowire echo nullam driftshade dignissim. Exorcit gateway portarum glimmerflux tincidunt nulla. Voxshade ornare sigil-run asylum route elementum. Integer breach-lock suspendisse glitchcode sapien node-link.</p>
+        </div>
+        <div>
+          <p class="text-white font-semibold uppercase">SOURCE</p>
+          <p class="item-source text-gray-300 text-xs mt-1 leading-relaxed">Recovered from the ruins of the Quantum Nexus after the Great Collapse. Originally part of the core processing unit that maintained reality stability across multiple dimensions.</p>
+        </div>
+        <div>
+          <p class="text-yellow-300 font-semibold uppercase">WHY IT WANTED</p>
+          <p class="item-why text-gray-300 text-xs mt-1 leading-relaxed">Contains fragments of the original reality matrix. Governments and corporations seek it to rebuild dimensional gateways. Extremely dangerous - previous owners reported experiencing multiple timelines simultaneously.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-between items-center">
+        <p class="item-price text-xl font-bold">100 U</p>
+        <button id="detail-stash-button" class="bg-neonGreen text-black px-6 py-2 rounded-full font-semibold hover:bg-green-400 transition">
+          PUT TO STASH
+        </button>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    let allItems = [];
+    let selectedItem = null;
+
+    // Load items and render cards
+    fetch('data/mostwanted.json')
+      .then(res => res.json())
+      .then(items => {
+        allItems = items;
+        renderGrid(allItems);
+        updateStashCount();
+      })
+      .catch(err => console.error("Failed to load items:", err));
+
+    function renderGrid(items) {
+      const grid = document.getElementById('item-grid');
+      grid.innerHTML = '';
+      
+      items.forEach((item, index) => {
+        const card = document.createElement('div');
+        card.className = `border border-yellow-400 p-4 rounded text-center hover:bg-white/5 transition cursor-pointer opacity-0 animate-fade-in`;
+        card.style.animationDelay = `${index * 100}ms`;
+        
+        card.innerHTML = `
+          <div class="flex justify-between text-xs mb-1">
+            <span class="bg-yellow-400 text-black px-2 py-0.5 rounded font-bold">${item.rating}/5.0</span>
+            <span class="bg-pink-500 px-2 py-0.5 rounded">${item.score}/100</span>
+          </div>
+          <img src="../../${item.image}" alt="${item.name}" class="w-20 h-20 object-contain mx-auto mb-3" />
+          <p class="font-bold text-sm">${item.name}</p>
+          <p class="text-xs text-gray-300 mb-2">${item.price} u</p>
+          <button class="stash-button w-full bg-neonGreen text-black text-sm font-semibold py-1 rounded-full hover:bg-green-400 transition" data-item-name="${item.name}">
+            PUT TO STASH
+          </button>
+        `;
+        
+        // Add click handler for card selection
+        card.addEventListener('click', (e) => {
+          if (!e.target.classList.contains('stash-button')) {
+            selectItem(item);
+          }
+        });
+        
+        grid.appendChild(card);
+      });
+    }
+
+    function selectItem(item) {
+      selectedItem = item;
+      
+      // Update detail panel
+      document.querySelector('.item-name').textContent = item.name;
+      document.querySelector('.item-price').textContent = `${item.price} U`;
+      document.querySelector('.item-image').src = `../../${item.image}`;
+      document.querySelector('.item-description').textContent = item.description;
+      document.querySelector('.item-source').textContent = item.source;
+      document.querySelector('.item-why').textContent = item.why;
+      
+      // Update detail panel stash button
+      const detailButton = document.getElementById('detail-stash-button');
+      detailButton.onclick = () => addToStash(item);
+    }
+
+    function addToStash(item) {
+      const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+
+      // Check if item is already in stash
+      const existing = stash.find(i => i.name === item.name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        item.quantity = 1;
+        stash.push(item);
+      }
+
+      localStorage.setItem('hexline-stash', JSON.stringify(stash));
+      updateStashCount();
+      
+      // Show success message
+      const message = document.createElement('div');
+      message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+      message.textContent = `${item.name} added to stash!`;
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        message.remove();
+      }, 3000);
+    }
+
+    function updateStashCount() {
+      const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+      const total = stash.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('stash-count').textContent = total;
+    }
+
+    // Event delegation for stash buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('stash-button')) {
+        e.stopPropagation();
+        const itemName = e.target.getAttribute('data-item-name');
+        const item = allItems.find(i => i.name === itemName);
+        if (item) {
+          addToStash(item);
+        }
+      }
+    });
+
+    // Initialize with first item selected
+    document.addEventListener('DOMContentLoaded', () => {
+      if (allItems.length > 0) {
+        selectItem(allItems[0]);
+      }
+    });
+  </script>
+</body>
+</html>

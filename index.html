@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hexline</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CDN (for dev use only) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neonGreen: '#00FFAA',
+                        hotPink: '#FF2C79',
+                        acidYellow: '#DFFF00',
+                        cyberYellow: '#FFE600',
+                        gunmetal: '#1F1F1F',
+                        slateGray: '#808080',
+                        snowWhite: '#F8F8F8',
+                        pureBlack: '#000000',
+                        fogGray: '#E0E0E0'
+                    },
+                    animation: {
+                        'slide-in-left': 'slideInLeft 0.8s ease-out',
+                        'slide-in-right': 'slideInRight 0.8s ease-out',
+                        'fade-rise': 'fadeRise 1.2s ease-out'
+                    },
+                    keyframes: {
+                        slideInLeft: {
+                            '0%': { transform: 'translateX(-50%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        slideInRight: {
+                            '0%': { transform: 'translateX(50%)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' }
+                        },
+                        fadeRise: {
+                            '0%': { transform: 'translateY(40px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center px-6">
+    <div class="relative w-full max-w-7xl flex items-center justify-between gap-12">
+
+        <!-- LEFT TEXT CONTENT -->
+        <div class="z-10 text-left max-w-xl animate-slide-in-left">
+            <p class="text-gray-400 uppercase text-sm tracking-widest">Welcome to :</p>
+
+            <h1 class="text-5xl font-semibold text-neonGreen mb-4">
+                HEX<span class="text-white">LINE</span>
+            </h1>
+
+            <p class="text-3xl text-gray-300 italic mb-8">
+                “If it’s banned, bartered, or biohazard — it’s probably on
+                <span class="text-neonGreen font-semibold">HEXLINE.</span>”
+            </p>
+        </div>
+
+        <!-- RIGHT TEXT CTA -->
+        <div class="z-10 text-right max-w-sm animate-slide-in-right">
+            <p class="text-3xl font-semibold mb-4">
+                NO QUESTIONS, NO RECEIPTS.<br> BROWSE THE STOCKPILE.
+            </p>
+
+            <a href="main.html"
+                class="inline-block bg-neonGreen text-black px-6 py-3 rounded-full font-bold hover:bg-hotPink transition">
+                JACK IN
+            </a>
+        </div>
+
+        <!-- BACKGROUND IMAGE -->
+        <img src="assets/placeholder/freepik_br_4486da96-4d49-4f50-a72c-b9af2dbcbf86.png" alt="Robotic Hummingbird"
+            class="scale-105 absolute inset-0 mx-auto max-w-4xl opacity-90 pointer-events-none animate-fade-rise" />
+
+    </div>
+</body>
+
+</html>

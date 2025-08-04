@@ -1,0 +1,217 @@
+[
+    {
+      "name": "Hotstart Kit",
+      "description": "\ud83d\udcac For new clients trying to vanish in style.",
+      "rating": 4.5,
+      "stock": 20,
+      "image": "assets/products/bundle/hotstart.png",
+      "contents": [
+        "Cleanwrap",
+        "Mirrorfuzz Vial",
+        "Shadowpin",
+        "Burner keychain with a backup ID"
+      ]
+    },
+    {
+      "name": "Mindwreck Pack",
+      "description": "\ud83d\udcac Best seller. Also banned in 2 sectors.",
+      "rating": 4.8,
+      "stock": 12,
+      "image": "assets/products/bundle/mindwreck.png",
+      "contents": [
+        "Memsplice Stick",
+        "Knock-Knot",
+        "Headjack Echo",
+        "One unlabelled emotion vial"
+      ]
+    },
+    {
+      "name": "The Illusionist Loadout",
+      "description": "\ud83d\udcac You\u2019re not you anymore. Probably better that way.",
+      "rating": 4.6,
+      "stock": 15,
+      "image": "assets/products/bundle/illusionistloadout.png",
+      "contents": [
+        "Lightbind Strap",
+        "Ghostline Shard",
+        "Shifter Cube",
+        "1 bugged identity badge"
+      ]
+    },
+    {
+      "name": "No Signal Pack",
+      "description": "\ud83d\udcac Don\u2019t listen twice. Seriously.",
+      "rating": 4.9,
+      "stock": 8,
+      "image": "assets/products/bundle/nosignalpack.png",
+      "contents": [
+        "Bootleg 33-C",
+        "Shadowpin",
+        "Mirrorfuzz Vial",
+        "Lost message"
+      ]
+    },
+    {
+      "name": "Null Mage Pack",
+      "description": "\ud83d\udcac For occult technomancers, cursed sysadmins, and digital exorcists.",
+      "rating": 5.0,
+      "stock": 7,
+      "image": "assets/products/bundle/nullmage.png",
+      "contents": [
+        "Specter Glyph (x2)",
+        "Black Script Chip",
+        "Aetherflare Prism",
+        "Glyph Key Decoder"
+      ]
+    },
+    {
+      "name": "Dealer\u2019s Special: Dead Drops Only",
+      "description": "\ud83d\udcac Marked for trade, not return.",
+      "rating": 4.2,
+      "stock": 10,
+      "image": "assets/products/bundle/deaddroponly.png",
+      "contents": [
+        "Gutter Sigil Coin",
+        "Neural Splice Key",
+        "Scab Drone Fragment",
+        "Dealer\u2019s Mark (Hidden sigil)"
+      ]
+    },
+    {
+      "name": "Junkwitch's Starter Cache",
+      "description": "\ud83d\udcac For hexers with no coven and a stolen terminal.",
+      "rating": 3.9,
+      "stock": 17,
+      "image": "assets/products/bundle/junkwitch.png",
+      "contents": [
+        "Thornjaw Clasp",
+        "Murkroot Bloom",
+        "Specter Glyph (Type-9)",
+        "Glyph-key Decoder"
+      ]
+    },
+    {
+      "name": "Soft War Loadout",
+      "description": "\ud83d\udcac No guns. Just ghosts, glitches, and open doors.",
+      "rating": 4.7,
+      "stock": 11,
+      "image": "assets/products/bundle/softwar.png",
+      "contents": [
+        "Nullflare Cartridge",
+        "AR Cloak Patch",
+        "Wyrm.OS Bootcard",
+        "Backdoor Iris"
+      ]
+    },
+    {
+      "name": "Sibyl's Mercy Pack",
+      "description": "\ud83d\udcac She saw it coming. She sent this instead.",
+      "rating": 4.3,
+      "stock": 14,
+      "image": "assets/products/bundle/sibylmercy.png",
+      "contents": [
+        "Sibyl Fragment (C-22)",
+        "Neural Splice Key",
+        "Cradlecast Core",
+        "Dustvein Serum"
+      ]
+    },
+    {
+      "name": "Silent Corridor Kit",
+      "description": "\ud83d\udcac For when you need to clear a hallway and no one should hear it happen.",
+      "rating": 4.4,
+      "stock": 13,
+      "image": "assets/products/bundle/silentcorridor.png",
+      "contents": [
+        "Stitcher Bolt Dagger",
+        "AR Cloak Patch",
+        "Ghostline Shard",
+        "Burner Keychain with Backup ID",
+        "Black Script Chip (Decrypted)"
+      ]
+    },
+    {
+      "name": "Gutter Surge Pack",
+      "description": "\ud83d\udcac Street brawls. Hit and runs. Syringes, fists, and not a damn plan.",
+      "rating": 4.0,
+      "stock": 18,
+      "image": "assets/products/bundle/guttersurge.png",
+      "contents": [
+        "Fangstatic Knuckle",
+        "Dustvein Serum (Batch #89x)",
+        "Voxbox Echo Core",
+        "Gritshank-19",
+        "Scab Drone Fragment"
+      ]
+    },
+    {
+      "name": "Phantom Relay Drop",
+      "description": "\ud83d\udcac A kit for ghosts: watchers, hackers, and vanishing operators.",
+      "rating": 4.6,
+      "stock": 9,
+      "image": "assets/products/bundle/phantomrelay.png",
+      "contents": [
+        "Neural Splice Key",
+        "Junktongue Relay",
+        "Mirrorfuzz Vial",
+        "Specter Glyph (Type-9)",
+        "Lightbind Strap"
+      ]
+    },
+    {
+      "name": "Crash Entry Load",
+      "description": "\ud83d\udcac Not subtle. Not elegant. But the door\u2019s off its hinges and you\u2019re still standing.",
+      "rating": 4.1,
+      "stock": 16,
+      "image": "assets/products/bundle/crashentry.png",
+      "contents": [
+        "Flea-Mod 32U SMG",
+        "Drop-Tongue Taser Whip",
+        "Bootleg 33-C",
+        "TUNNEL-HACK Sawpike",
+        "Cleanwrap"
+      ]
+    },
+    {
+      "name": "Midnight Doctrine Cache",
+      "description": "\ud83d\udcac Cult ops, encrypted rituals, and death that smells like ozone and ash.",
+      "rating": 4.5,
+      "stock": 6,
+      "image": "assets/products/bundle/midnightdoctrine.png",
+      "contents": [
+        "Seraphim 404 Script",
+        "Gospel Null-Tongue",
+        "Orison Glyph / Echo Form",
+        "Shifter Cube",
+        "Cryo-Halo Cincture"
+      ]
+    },
+    {
+      "name": "Drift Protocol Pack",
+      "description": "\ud83d\udcac For when extraction fails and identity burns.",
+      "rating": 4.2,
+      "stock": 10,
+      "image": "assets/products/bundle/driftprotocol.png",
+      "contents": [
+        "Wyrm.OS Bootcard",
+        "AR Cloak Patch",
+        "Redactor Shell",
+        "Mothbox Stunner",
+        "Gutter Sigil Coin"
+      ]
+    },
+    {
+      "name": "Cut & Carry Kit",
+      "description": "\ud83d\udcac For when there\u2019s no time to hide the body and you are the getaway.",
+      "rating": 3.8,
+      "stock": 19,
+      "image": "assets/products/bundle/cutcarry.png",
+      "contents": [
+        "Spinal Reed Blade",
+        "Velcroach Packlet (Active)",
+        "Headjack Echo",
+        "Black Script Chip (Decrypted)",
+        "Orphan Script"
+      ]
+    }
+  ]

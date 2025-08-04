@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexline - Stash</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif']
+          },
+          colors: {
+            neonGreen: '#00FFAA',
+            cyberPink: '#FF2C79',
+            bitcoinPink: '#FF00FF',
+            darkGray: '#1A1A1A',
+            cyberBlack: '#0a0a0a',
+            cyberBlue: '#00BFFF',
+            glowWhite: '#f0f0f0'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.3s ease-in forwards',
+            'fade-out': 'fadeOut 0.2s ease-out forwards',
+            'stagger-in': 'staggerIn 0.3s ease-out both'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            fadeOut: {
+              '0%': { opacity: 1 },
+              '100%': { opacity: 0 },
+            },
+            staggerIn: {
+              from: { opacity: 0, transform: 'scale(0.95)' },
+              to: { opacity: 1, transform: 'scale(1)' }
+            }
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: white;
+      position: relative;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      background-image: url('assets/placeholder/cyberpunk-bitcoin-illustration (2).jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      inset: 0;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .item {
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .item.fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .item.fade-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-cyberBlack bg-opacity-90">
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-6 py-4 border-b border-neonGreen bg-black bg-opacity-80">
+    <h1 class="text-5xl font-bold text-neonGreen">HEXLINE</h1>
+    <ul class="flex gap-6 text-sm font-bold ">
+      <li><a href="#" class="border px-2 py-1 border-neonGreen text-neonGreen text-xl">STOCKPILE</a></li>
+      <li><a href="mostwanted.html" class="hover:text-neonGreen transition text-xl">MOST WANTED</a></li>
+      <li><a href="justsmuggled.html" class="hover:text-neonGreen transition text-xl">JUST SMUGGLED</a></li>
+      <li><a href="loadbayxiii.html" class="hover:text-neonGreen transition text-xl">LOADBAY XIII</a></li>
+      <li><a href="dropcrates.html" class="hover:text-neonGreen transition text-xl">DROPCRATES</a></li>
+    </ul>
+    <div class="flex gap-4">
+      <a href="stash.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">STASH <span id="stash-count" class="text-xs">0</span></a>
+      <a href="linkin.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">LINK
+        IN</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="p-8">
+    <div class="flex justify-between items-center mb-8">
+      <h1 class="text-3xl font-bold text-neonGreen">YOUR STASH.</h1>
+      <button id="clear-stash-btn" class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition">
+        CLEAR STASH
+      </button>
+    </div>
+
+    <!-- STASH ITEMS LIST -->
+    <div id="stash-items" class="space-y-4 mb-8">
+      <!-- Items will be loaded here -->
+    </div>
+
+    <!-- GRAND TOTAL SECTION -->
+    <div id="grand-total-section" class="hidden">
+      <div class="flex justify-between items-center p-6 border border-neonGreen bg-black/30 rounded-lg">
+        <h2 class="text-2xl font-bold text-neonGreen">GRAND TOTAL :</h2>
+        <div class="text-right">
+          <div class="text-4xl font-bold text-cyberPink" id="grand-total-value">0 u</div>
+        </div>
+      </div>
+      
+      <div class="mt-6 text-center">
+        <a href="payment.html" id="proceed-btn" class="bg-neonGreen text-black font-bold py-4 px-8 rounded-lg text-xl hover:bg-green-400 transition">
+          PROCEED →
+        </a>
+      </div>
+    </div>
+
+    <!-- EMPTY STASH MESSAGE -->
+    <div id="empty-stash" class="text-center py-16">
+      <div class="text-6xl mb-4">📦</div>
+      <h2 class="text-2xl font-bold mb-2">Your Stash is Empty</h2>
+      <p class="text-gray-400 mb-6">Add some items from the stockpile to get started!</p>
+      <a href="main.html" class="bg-neonGreen text-black px-6 py-3 rounded-lg font-semibold hover:bg-green-400 transition">
+        BROWSE STOCKPILE
+      </a>
+    </div>
+  </main>
+
+  <script>
+    let stashItems = [];
+
+    function loadStash() {
+      stashItems = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+      renderStash();
+      updateStashCount();
+      
+      // Show welcome message if stash is empty
+      if (stashItems.length === 0) {
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-lg z-50 animate-fade-in';
+        message.textContent = 'Your stash is empty. Add items from the stockpile!';
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 4000);
+      }
+    }
+
+    function renderStash() {
+      const itemsContainer = document.getElementById('stash-items');
+      const emptyMessage = document.getElementById('empty-stash');
+      const grandTotalSection = document.getElementById('grand-total-section');
+
+      if (stashItems.length === 0) {
+        itemsContainer.innerHTML = '';
+        emptyMessage.classList.remove('hidden');
+        grandTotalSection.classList.add('hidden');
+        return;
+      }
+
+      emptyMessage.classList.add('hidden');
+      grandTotalSection.classList.remove('hidden');
+      itemsContainer.innerHTML = '';
+
+      stashItems.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.className = `item border border-neonGreen bg-black/30 rounded-lg p-6 opacity-0 animate-fade-in`;
+        itemElement.style.animationDelay = `${index * 100}ms`;
+
+        const itemTotal = (item.price || 0) * item.quantity;
+
+        itemElement.innerHTML = `
+          <div class="flex items-center justify-between">
+            <!-- Item Image -->
+            <div class="flex-shrink-0 mr-6">
+              <img src="${item.image}" alt="${item.name}" class="w-24 h-24 object-contain" />
+            </div>
+            
+            <!-- Item Details -->
+            <div class="flex-grow mr-6">
+              <div class="text-xl font-bold uppercase mb-2">${item.name}</div>
+              ${item.contents ? 
+                `<div class="text-sm text-gray-300 mb-2">Bundle Contents:</div>
+                 <ul class="text-xs text-gray-400 mb-2 list-disc list-inside">
+                   ${item.contents.slice(0, 3).map(content => `<li>${content}</li>`).join('')}
+                   ${item.contents.length > 3 ? `<li>... and ${item.contents.length - 3} more</li>` : ''}
+                 </ul>` : 
+                `<div class="text-lg font-bold">PRICE : ${item.price || 0} u</div>`
+              }
+            </div>
+            
+            <!-- Quantity Controls -->
+            <div class="flex-shrink-0 mr-6">
+              <div class="text-lg font-bold uppercase mb-2">QUANTITY</div>
+              <div class="flex items-center gap-4">
+                <button class="quantity-btn-minus text-2xl font-bold text-neonGreen hover:text-green-400 transition" data-item-name="${item.name}">-</button>
+                <span class="text-3xl font-bold">${item.quantity}</span>
+                <button class="quantity-btn-plus text-2xl font-bold text-neonGreen hover:text-green-400 transition" data-item-name="${item.name}">+</button>
+              </div>
+            </div>
+            
+            <!-- Item Total -->
+            <div class="flex-shrink-0 mr-6">
+              <div class="text-lg font-bold uppercase mb-2">TOTAL</div>
+              <div class="text-3xl font-bold">${item.contents ? 'Bundle' : itemTotal + ' u'}</div>
+            </div>
+            
+            <!-- Remove Button -->
+            <div class="flex-shrink-0">
+              <button class="remove-btn bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-sm font-bold transition" data-item-name="${item.name}">
+                REMOVE
+              </button>
+            </div>
+          </div>
+        `;
+
+        itemsContainer.appendChild(itemElement);
+      });
+
+      updateGrandTotal();
+    }
+
+    function updateStashCount() {
+      const total = stashItems.reduce((sum, item) => sum + item.quantity, 0);
+      document.getElementById('stash-count').textContent = total;
+    }
+
+    function updateGrandTotal() {
+      const grandTotal = stashItems.reduce((sum, item) => {
+        // Skip bundle items (crates) in price calculation
+        if (item.contents) {
+          return sum; // Bundle items don't contribute to price total
+        }
+        return sum + ((item.price || 0) * item.quantity);
+      }, 0);
+      document.getElementById('grand-total-value').textContent = `${grandTotal} u`;
+    }
+
+    function increaseQuantity(itemName) {
+      const item = stashItems.find(i => i.name === itemName);
+      if (item) {
+        item.quantity += 1;
+        localStorage.setItem('hexline-stash', JSON.stringify(stashItems));
+        renderStash();
+        updateStashCount();
+        
+        // Show success message
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+        message.textContent = `${itemName} quantity increased!`;
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 2000);
+      }
+    }
+
+    function decreaseQuantity(itemName) {
+      const item = stashItems.find(i => i.name === itemName);
+      if (item) {
+        if (item.quantity > 1) {
+          item.quantity -= 1;
+          localStorage.setItem('hexline-stash', JSON.stringify(stashItems));
+          renderStash();
+          updateStashCount();
+          
+          // Show success message
+          const message = document.createElement('div');
+          message.className = 'fixed top-4 right-4 bg-yellow-600 text-white px-4 py-2 rounded-lg z-50 animate-fade-in';
+          message.textContent = `${itemName} quantity decreased!`;
+          document.body.appendChild(message);
+          
+          setTimeout(() => {
+            message.remove();
+          }, 2000);
+        } else {
+          removeFromStash(itemName);
+        }
+      }
+    }
+
+    function removeFromStash(itemName) {
+      stashItems = stashItems.filter(item => item.name !== itemName);
+      localStorage.setItem('hexline-stash', JSON.stringify(stashItems));
+      renderStash();
+      updateStashCount();
+      
+      // Show success message
+      const message = document.createElement('div');
+      message.className = 'fixed top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg z-50 animate-fade-in';
+      message.textContent = `${itemName} removed from stash!`;
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        message.remove();
+      }, 3000);
+    }
+
+    function clearStash() {
+      if (confirm('Are you sure you want to clear your entire stash?')) {
+        localStorage.removeItem('hexline-stash');
+        stashItems = [];
+        renderStash();
+        updateStashCount();
+        
+        // Show success message
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg z-50 animate-fade-in';
+        message.textContent = 'Stash cleared!';
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 3000);
+      }
+    }
+
+    function proceedToCheckout() {
+      // Show success message
+      const message = document.createElement('div');
+      message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+      message.textContent = 'Proceeding to checkout...';
+      document.body.appendChild(message);
+      
+      setTimeout(() => {
+        message.remove();
+      }, 3000);
+      
+      // Here you could redirect to a checkout page or implement checkout logic
+      console.log('Proceeding to checkout with items:', stashItems);
+    }
+
+    // Event delegation for stash management buttons
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('quantity-btn-plus')) {
+        const itemName = e.target.getAttribute('data-item-name');
+        increaseQuantity(itemName);
+      } else if (e.target.classList.contains('quantity-btn-minus')) {
+        const itemName = e.target.getAttribute('data-item-name');
+        decreaseQuantity(itemName);
+      } else if (e.target.classList.contains('remove-btn')) {
+        const itemName = e.target.getAttribute('data-item-name');
+        removeFromStash(itemName);
+      } else if (e.target.id === 'clear-stash-btn') {
+        clearStash();
+      } else if (e.target.id === 'proceed-btn') {
+        proceedToCheckout();
+      }
+    });
+
+    // Load stash on page load
+    document.addEventListener('DOMContentLoaded', loadStash);
+  </script>
+
+</body>
+
+</html> 

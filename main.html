@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hexline - Stockpile</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif']
+          },
+          colors: {
+            neonGreen: '#00FFAA',
+            cyberPink: '#FF2C79',
+            bitcoinPink: '#FF00FF',
+            darkGray: '#1A1A1A',
+            cyberBlack: '#0a0a0a',
+            cyberBlue: '#00BFFF',
+            glowWhite: '#f0f0f0'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.3s ease-in forwards',
+            'fade-out': 'fadeOut 0.2s ease-out forwards',
+            'stagger-in': 'staggerIn 0.3s ease-out both'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            fadeOut: {
+              '0%': { opacity: 1 },
+              '100%': { opacity: 0 },
+            },
+            staggerIn: {
+              from: { opacity: 0, transform: 'scale(0.95)' },
+              to: { opacity: 1, transform: 'scale(1)' }
+            }
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: white;
+      position: relative;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      background-image: url('assets/placeholder/cyberpunk-bitcoin-illustration (2).jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      inset: 0;
+      opacity: 0.1;
+      /* change this as needed */
+      z-index: -1;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .item {
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .item.fade-out {
+      opacity: 0;
+      transform: scale(0.95);
+      pointer-events: none;
+    }
+
+    .item.fade-in {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-cyberBlack bg-opacity-90">
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-6 py-4 border-b border-neonGreen bg-black bg-opacity-80">
+    <h1 class="text-5xl font-bold text-neonGreen">HEXLINE</h1>
+    <ul class="flex gap-6 text-sm font-bold ">
+      <li><a href="#" class="border px-2 py-1 border-neonGreen text-neonGreen text-xl">STOCKPILE</a></li>
+      <li><a href="mostwanted.html" class="hover:text-neonGreen transition text-xl">MOST WANTED</a></li>
+      <li><a href="justsmuggled.html" class="hover:text-neonGreen transition text-xl">JUST SMUGGLED</a></li>
+      <li><a href="loadbayxiii.html" class="hover:text-neonGreen transition text-xl">LOADBAY XIII</a></li>
+      <li><a href="dropcrates.html" class="hover:text-neonGreen transition text-xl">DROPCRATES</a></li>
+    </ul>
+    <div class="flex gap-4">
+      <a href="stash.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">STASH</a>
+      <a href="linkin.html"
+        class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">LINK
+        IN</a>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT (layout placeholder) -->
+  <main class="flex flex-row p-8 gap-8">
+    <!-- SIDEBAR FILTER -->
+    <aside id="filters" class="w-72 p-6 border-r border-white/10 backdrop-blur-sm bg-black/50">
+      <h2 class="text-xl font-bold mb-4">FILTER</h2>
+
+      <!-- CATEGORY FILTER -->
+      <div class="mb-6">
+        <p class="font-semibold mb-1">BY CATEGORY :</p>
+        <ul class="space-y-1 text-sm" id="filter-category">
+          <li><label><input type="checkbox" value="NEUROTECH"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              NEUROTECH</label></li>
+          <li><label><input type="checkbox" value="OCCULT-TECH"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              OCCULT-TECH</label></li>
+          <li><label><input type="checkbox" value="STEALTH-GEAR"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              STEALTH-GEAR</label></li>
+          <li><label><input type="checkbox" value="BIOCHEM/SERUM"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              BIOCHEM/SERUM</label></li>
+          <li><label><input type="checkbox" value="GLITCHWARE & SCRIPTS"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              GLITCHWARE & SCRIPTS</label></li>
+          <li><label><input type="checkbox" value="FRAGMENTS & RELICS"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              FRAGMENTS & RELICS</label></li>
+        </ul>
+      </div>
+
+      <!-- PRICE SORT -->
+      <div class="mb-6">
+        <p class="font-semibold mb-1">BY PRICE :</p>
+        <select id="filter-price-sort" class="bg-black border border-white/20 px-2 py-1 text-sm w-full">
+          <option value="default">DEFAULT</option>
+          <option value="low">LOWEST</option>
+          <option value="high">HIGHEST</option>
+        </select>
+      </div>
+
+      <!-- RATING FILTER -->
+      <div class="mb-6">
+        <p class="font-semibold mb-1">BY RATINGS :</p>
+        <ul class="space-y-1 text-sm" id="filter-rating">
+          <li><label><input type="checkbox" value="5"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              ★★★★★</label></li>
+          <li><label><input type="checkbox" value="4"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              ★★★★☆</label></li>
+          <li><label><input type="checkbox" value="3"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              ★★★☆☆</label></li>
+          <li><label><input type="checkbox" value="2"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              ★★☆☆☆</label></li>
+          <li><label><input type="checkbox" value="1"
+                class="transition-all duration-300 ease-in-out scale-100 checked:scale-110 checked:accent-[#00FFAA]" />
+              ★☆☆☆☆</label></li>
+        </ul>
+      </div>
+
+      <!-- TYPE RADIO FILTER -->
+      <div>
+        <p class="font-semibold mb-1">BY TYPE :</p>
+        <label class="block text-sm"><input type="radio" name="type" value="BUNDLE" /> BUNDLE</label>
+        <label class="block text-sm"><input type="radio" name="type" value="INDIVIDUAL" /> INDIVIDUAL</label>
+        <label class="block text-sm"><input type="radio" name="type" value="ANY" checked /> ANY</label>
+      </div>
+    </aside>
+
+
+    <!-- MAIN GRID -->
+    <main class="flex-1 p-6">
+      <h1 class="text-3xl font-bold mb-8">STOCKPILE</h1>
+      <div id="item-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+    </main>
+
+    <!-- POPUP -->
+    <!-- POPUP CONTAINER -->
+    <div id="popup" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center hidden">
+      <div
+        class="popup-inner bg-[#0A0A0A] border border-neonGreen rounded-xl p-6 w-full max-w-md text-white relative shadow-xl transform transition duration-300 scale-95 opacity-0">
+
+        <!-- ✖ Close Button -->
+        <button onclick="closePopup()"
+          class="absolute top-2 right-4 text-white text-xl hover:text-neonGreen">&times;</button>
+
+        <!-- ⬆️ Top Rating / Title / Score -->
+        <div class="flex justify-between items-center border-b border-neonGreen pb-2 mb-4 text-lg font-bold">
+          <span class="item-rating text-yellow-400">4.9/5.0</span>
+          <span class="item-name text-center flex-grow uppercase text-xl text-white">Item Name</span>
+          <span class="item-score text-pink-400 text-right">91/100</span>
+        </div>
+
+        <!-- 🔁 Image -->
+        <img class="item-image w-52 h-52 object-contain mx-auto my-4" src="" alt="Popup Image" />
+
+        <!-- 📖 Description -->
+        <div class="mt-4 px-2 py-3 border-t border-b border-neonGreen">
+          <p class="uppercase text-sm font-semibold mb-2">Item Description :</p>
+          <p class="item-description text-xs leading-snug text-white/90">
+            This is where the item's description will go.
+          </p>
+        </div>
+
+        <!-- 💰 Price + CTA -->
+        <div class="flex justify-between items-center mt-4">
+          <p class="item-price text-xl font-bold">100 U</p>
+          <button id="popup-stash-button" class="bg-[#00FFAA] text-black font-semibold py-2 px-5 rounded-full transition hover:scale-105">
+            PUT TO STASH
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+        <script>
+      let allItems = [];
+
+      // Load items and render cards
+      fetch('data/stockpile.json')
+        .then(res => res.json())
+        .then(items => {
+          allItems = items;
+          renderItems(allItems);
+        })
+        .catch(err => console.error("Failed to load items:", err));
+
+      function renderItems(items) {
+        const grid = document.getElementById('item-grid');
+        const existing = [...grid.children];
+
+        // Fade out existing cards before replacing
+        existing.forEach(el => {
+          el.classList.remove('animate-fade-in');
+          el.classList.add('animate-fade-out');
+        });
+
+        setTimeout(() => {
+          grid.innerHTML = '';
+          items.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = `card cursor-pointer relative p-4 border border-neonGreen bg-white/5 \
+            rounded-xl hover:bg-white/10 transition group opacity-0 animate-fade-in`;
+            card.style.animationDelay = `${index * 50}ms`;
+            card.onclick = () => openPopup(item);
+
+            card.innerHTML = `
+            <div class="absolute top-2 left-2 text-xs bg-yellow-400 text-black font-bold px-2 py-0.5 rounded">
+              ${item.rating}/5.0
+            </div>
+            <div class="absolute top-2 right-2 text-xs bg-pink-500 px-2 py-0.5 rounded">
+              ${item.score}/100
+            </div>
+            <img src="${item.image}" alt="${item.name}" class="w-20 h-20 object-contain mx-auto mb-4" />
+            <div class="text-center mb-4">
+              <p class="text-sm font-bold">${item.name}</p>
+              <p class="text-xs text-gray-300">${item.price} GSC</p>
+            </div>
+            <button class="stash-button w-full bg-[#00FFAA] text-black text-sm font-semibold py-2 rounded-full group-hover:scale-105 transition" data-item-name="${item.name}">
+              PUT TO STASH
+            </button>
+          `;
+
+            grid.appendChild(card);
+          });
+        }, 200); // match fade-out
+      }
+
+      // POPUP
+      const popup = document.getElementById('popup');
+
+      function openPopup(item) {
+        popup.querySelector('.item-name').textContent = item.name;
+        popup.querySelector('.item-rating').textContent = `${item.rating}/5.0`;
+        popup.querySelector('.item-score').textContent = `${item.score}/100`;
+        popup.querySelector('.item-price').textContent = `${item.price} U`;
+        popup.querySelector('.item-description').textContent = item.description;
+        popup.querySelector('.item-image').src = item.image;
+
+        // Update the popup button to use the current item
+        const popupButton = popup.querySelector('#popup-stash-button');
+        popupButton.onclick = () => addToStash(item);
+
+        popup.classList.remove('hidden');
+        const inner = popup.querySelector('.popup-inner');
+        requestAnimationFrame(() => {
+          inner.classList.remove('scale-95', 'opacity-0');
+          inner.classList.add('scale-100', 'opacity-100');
+        });
+      }
+
+      function closePopup() {
+        const inner = popup.querySelector('.popup-inner');
+        inner.classList.remove('scale-100', 'opacity-100');
+        inner.classList.add('scale-95', 'opacity-0');
+
+        setTimeout(() => {
+          popup.classList.add('hidden');
+        }, 300); // matches transition duration
+      }
+
+      function addToStash(item) {
+        const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+
+        // Check if item is already in stash
+        const existing = stash.find(i => i.name === item.name);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          item.quantity = 1;
+          stash.push(item);
+        }
+
+        localStorage.setItem('hexline-stash', JSON.stringify(stash));
+        
+        // Show success message
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+        message.textContent = `${item.name} added to stash!`;
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 3000);
+      }
+
+      function applyFilters() {
+        const categories = [...document.querySelectorAll('#filter-category input:checked')].map(cb => cb.value);
+        const ratings = [...document.querySelectorAll('#filter-rating input:checked')].map(cb => parseFloat(cb.value));
+        const priceSort = document.getElementById('filter-price-sort').value;
+        const type = document.querySelector('input[name="type"]:checked')?.value || 'ANY';
+
+        let filtered = allItems.filter(item => {
+          const inCategory = categories.length
+            ? Array.isArray(item.category)
+              ? item.category.some(cat => categories.includes(cat))
+              : categories.includes(item.category)
+            : true;
+
+          const inRating = ratings.length ? ratings.includes(Math.floor(item.rating)) : true;
+          const inType = (type === 'ANY' || item.type === type);
+
+          return inCategory && inRating && inType;
+        });
+
+        if (priceSort === 'low') filtered.sort((a, b) => a.price - b.price);
+        if (priceSort === 'high') filtered.sort((a, b) => b.price - a.price);
+
+        renderItems(filtered);
+      }
+
+      // Event delegation for stash buttons
+      document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('stash-button')) {
+          e.stopPropagation();
+          const itemName = e.target.getAttribute('data-item-name');
+          const item = allItems.find(i => i.name === itemName);
+          if (item) {
+            addToStash(item);
+          }
+        }
+      });
+
+      document.querySelectorAll('#filters input, #filters select').forEach(el => {
+        el.addEventListener('change', applyFilters);
+      });
+    </script>
+
+</body>
+
+</html>

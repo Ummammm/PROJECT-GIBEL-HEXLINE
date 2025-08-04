@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HEXLINE - Link In</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['IBM Plex Sans', 'sans-serif']
+          },
+          colors: {
+            neonGreen: '#00FFAA',
+            cyberPink: '#FF2C79',
+            bitcoinPink: '#FF00FF',
+            darkGray: '#1A1A1A',
+            cyberBlack: '#0a0a0a',
+            cyberBlue: '#00BFFF',
+            glowWhite: '#f0f0f0'
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.3s ease-in forwards',
+            'fade-out': 'fadeOut 0.2s ease-out forwards',
+            'glow': 'glow 2s ease-in-out infinite alternate',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: 0, transform: 'translateY(10px)' },
+              '100%': { opacity: 1, transform: 'translateY(0)' },
+            },
+            fadeOut: {
+              '0%': { opacity: 1 },
+              '100%': { opacity: 0 },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 5px #00FFAA, 0 0 10px #00FFAA, 0 0 15px #00FFAA' },
+              '100%': { boxShadow: '0 0 10px #00FFAA, 0 0 20px #00FFAA, 0 0 30px #00FFAA' }
+            }
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      color: white;
+      position: relative;
+      z-index: 0;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      background-image: url('assets/placeholder/vintage-looking-3d-personal-computer.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: fixed;
+      inset: 0;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    .login-form {
+      backdrop-filter: blur(10px);
+      background: rgba(10, 10, 10, 0.8);
+      border: 2px solid #00FFAA;
+      box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+    }
+
+    .input-field {
+      background: #00FFAA;
+      color: #000;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .input-field:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(0, 255, 170, 0.5);
+      transform: scale(1.02);
+    }
+
+    .input-field::placeholder {
+      color: #333;
+      opacity: 0.7;
+    }
+
+    .login-btn {
+      background: linear-gradient(45deg, #FF2C79, #FF00FF);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 44, 121, 0.4);
+    }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .login-btn:hover::before {
+      left: 100%;
+    }
+
+    .monitor-glow {
+      animation: glow 3s ease-in-out infinite alternate;
+    }
+
+   
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.3s ease-out;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen w-full bg-cyberBlack">
+  <!-- NAVBAR -->
+  <nav class="flex items-center justify-between px-6 py-4 border-b border-neonGreen bg-black bg-opacity-80">
+    <h1 class="text-5xl font-bold text-neonGreen">HEXLINE</h1>
+    <ul class="flex gap-6 text-sm font-bold">
+      <li><a href="main.html" class="border px-2 py-1 border-neonGreen text-neonGreen text-xl">STOCKPILE</a></li>
+      <li><a href="mostwanted.html" class="hover:text-neonGreen transition text-xl">MOST WANTED</a></li>
+      <li><a href="justsmuggled.html" class="hover:text-neonGreen transition text-xl">JUST SMUGGLED</a></li>
+      <li><a href="loadbayxiii.html" class="hover:text-neonGreen transition text-xl">LOADBAY XIII</a></li>
+      <li><a href="dropcrates.html" class="hover:text-neonGreen transition text-xl">DROPCRATES</a></li>
+    </ul>
+    <div class="flex gap-4">
+      <a href="stash.html" class="border border-neonGreen px-3 py-1 text-sm hover:bg-neonGreen hover:text-black transition text-xl">STASH <span id="stash-count" class="text-xs">0</span></a>
+      <a href="linkin.html" class="bg-neonGreen text-black px-3 py-1 text-sm font-bold transition text-xl">LINK IN</a>
+    </div>
+  </nav> 
+  <!-- MAIN CONTENT -->
+  <main class="relative z-10 flex items-center justify-center min-h-screen px-4">
+    <div class="login-form rounded-xl p-8 w-full max-w-md animate-fade-in">
+      <h2 class="text-3xl font-bold text-center mb-8">LINK IN YOUR CREDENTIAL</h2>
+      
+      <form id="login-form" class="space-y-6">
+        <div>
+          <label for="username" class="block text-sm font-semibold mb-2">USERNAME</label>
+          <input 
+            type="email" 
+            id="username" 
+            name="username" 
+            placeholder="EXAMPLE@EMAIL.COM" 
+            class="input-field w-full px-4 py-3 rounded-lg text-lg font-mono"
+            required
+          />
+        </div>
+        
+        <div>
+          <label for="password" class="block text-sm font-semibold mb-2">PASSWORD</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="PASSWORD123" 
+            class="input-field w-full px-4 py-3 rounded-lg text-lg font-mono"
+            required
+          />
+        </div>
+        
+        <button 
+          type="submit" 
+          class="login-btn w-full py-4 rounded-lg text-xl font-bold text-white relative"
+        >
+          LINK IN →
+        </button>
+      </form>
+
+      <!-- Additional Options -->
+      <div class="mt-6 text-center space-y-3">
+        <a href="#" class="block text-sm text-gray-400 hover:text-neonGreen transition">Forgot Password?</a>
+        <a href="#" class="block text-sm text-gray-400 hover:text-neonGreen transition">Create New Account</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Update stash count
+    function updateStashCount() {
+      const stash = JSON.parse(localStorage.getItem('hexline-stash')) || [];
+      const total = stash.reduce((sum, item) => sum + item.quantity, 0);
+      const stashCountElement = document.getElementById('stash-count');
+      if (stashCountElement) {
+        stashCountElement.textContent = total;
+      }
+    }
+
+    // Handle form submission
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      
+      // Show loading state
+      const submitBtn = document.querySelector('.login-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'LINKING...';
+      submitBtn.disabled = true;
+      
+      // Simulate login process
+      setTimeout(() => {
+        // Show success message
+        const message = document.createElement('div');
+        message.className = 'fixed top-4 right-4 bg-neonGreen text-black px-4 py-2 rounded-lg z-50 animate-fade-in';
+        message.textContent = `Welcome back, ${username}!`;
+        document.body.appendChild(message);
+        
+        setTimeout(() => {
+          message.remove();
+        }, 3000);
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // Redirect to main page after successful login
+        setTimeout(() => {
+          window.location.href = 'main.html';
+        }, 2000);
+        
+      }, 1500);
+    });
+
+    // Add some interactive effects
+    document.querySelectorAll('.input-field').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('animate-glow');
+      });
+      
+      input.addEventListener('blur', function() {
+        this.parentElement.classList.remove('animate-glow');
+      });
+    });
+
+    // Initialize stash count on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      updateStashCount();
+    });
+  </script>
+
+</body>
+
+</html>
